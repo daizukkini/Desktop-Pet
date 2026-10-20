@@ -1,0 +1,25 @@
+{
+    "pet_info": {
+        "pet_name": "TempPet",
+        "stats": {
+            "hunger": 50,
+            "happiness": 50,
+            "energy": 50
+        }
+    },
+    
+    "school_tracker": {
+        "assignments": [
+            {
+                "title": "Python JSON Lab",
+                "due_date": "2026-10-25",
+                "status": "In Progress"
+            },
+            {
+                "title": "History Essay",
+                "due_date": "2026-10-30",
+                "status": "Not Started"
+            }
+        ]
+    }
+}

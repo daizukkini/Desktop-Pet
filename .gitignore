@@ -1,0 +1,9 @@
+# Environment secrets
+*.env
+
+# Personal information
+database.json
+
+# Cache info
+__pycache__/
+*.pyc
