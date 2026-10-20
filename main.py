@@ -1,29 +1,23 @@
 import os
 import sys
-from src.data_config import createEnv, createDatabase
+from src.database_config import createDatabase
+from src.env_config import startupEnv, loadEnv
+from dotenv import set_key
 
 def init_environment():
-    # Create .env file from template if it doesn't exist
-    createEnv()
+    if not startupEnv(): 
+        print("Error: Failed to set up the environment. Exiting.")
+        sys.exit(1)
 
     # Create database.json file from template if it doesn't exist
     createDatabase()
 
-    # Load environment variables from .env file
-    if os.path.exists(".env"):
-        with open(".env") as f:
-            for line in f:
-                if line.strip() and not line.startswith("#"):
-                    key, value = line.strip().split("=", 1)
-                    os.environ[key] = value
-    else:
-        print("Error: .env file not found. Please ensure the environment is set up correctly.")
-        sys.exit(1)
-
 def main():
     # Actual application code goes here
-    key = os.getenv("CANVAS_KEY")
-    print(key)
+    apiInput = input("Enter your Canvas API Key: ")
+    set_key(".env", "CANVAS_KEY", apiInput)
+    loadEnv()
+    print(os.getenv("CANVAS_KEY"))
 
 
 if __name__ == "__main__":
